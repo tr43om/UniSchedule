@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {darkTheme} from '../../styles';
+import {darkTheme} from '../styles';
 import {HomeScreen} from '../screens/HomeScreen';
 import {RootStack} from './root-routes';
 const Navigation = () => {

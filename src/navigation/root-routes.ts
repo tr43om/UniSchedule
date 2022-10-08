@@ -7,6 +7,6 @@ type RootTabsParams = {
   Settings: undefined;
 };
 
-export const Tabs = createMaterialTopTabNavigator<RootTabsParams>();
+export const Tabs = createBottomTabNavigator<RootTabsParams>();
 
 export const RootStack = createNativeStackNavigator();
