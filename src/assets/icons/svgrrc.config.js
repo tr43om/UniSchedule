@@ -6,13 +6,13 @@ module.exports = {
   memo: true,
   ext: 'tsx',
   ignoreExisting: true,
-  replaceAttrValues: {
-    white: '{props.fill || theme.colors.primary}',
-    '#FFFFFF': '{props.fill || theme.colors.primary}',
-    black: '{props.fill || theme.colors.primary}',
-    '#111111': '{props.fill || theme.colors.primary}',
-    '#000': '{props.fill || theme.colors.primary}',
-  },
+  // replaceAttrValues: {
+  //   white: '{props.fill || theme.colors.accent}',
+  //   '#FFFFFF': '{props.fill || theme.colors.accent}',
+  //   black: '{props.fill || theme.colors.accent}',
+  //   '#111111': '{props.fill || theme.colors.accent}',
+  //   '#000': '{props.fill || theme.colors.accent}',
+  // },
   svgProps: {
     width: '{props.width || 256}',
     height: '{props.height || 256}',

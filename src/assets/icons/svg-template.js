@@ -8,14 +8,11 @@ const template = (
   {imports, interfaces, componentName, props, jsx, exports},
   {tpl},
 ) => {
-  const componentNameModified =
-    componentName.charAt(0).toUpperCase() + componentName.slice(1);
   return tpl`
 ${imports};
-import {theme} from '../../styles';
 ${interfaces}
 ${comments}
-const ${componentNameModified} = (${props}) => (
+const ${componentName} = (${props}) => (
   ${jsx}
 );
  
