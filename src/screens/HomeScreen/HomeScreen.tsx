@@ -33,6 +33,19 @@ const HomeScreen = () => {
         }}
       />
       <Tabs.Screen
+        name="Favorite"
+        component={SettingsScreen}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <SettingsIcon
+              fill={focused ? colors.primary : '#fff'}
+              width={25}
+              height={25}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="Settings"
         component={SettingsScreen}
         options={{

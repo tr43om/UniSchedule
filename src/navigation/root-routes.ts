@@ -5,6 +5,7 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 type RootTabsParams = {
   Schedule: undefined;
   Settings: undefined;
+  Favorite: undefined;
 };
 
 export const Tabs = createBottomTabNavigator<RootTabsParams>();
