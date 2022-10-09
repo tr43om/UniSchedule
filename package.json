@@ -11,6 +11,8 @@
     "icons:create": "npx @svgr/cli --config-file ./src/assets/icons/svgrrc.config.js -- ./src/assets/icons/source"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^15.7.0",
+    "@react-native-firebase/firestore": "^15.7.0",
     "@react-navigation/bottom-tabs": "^6.4.0",
     "@react-navigation/material-top-tabs": "^6.2.4",
     "@react-navigation/native": "^6.0.13",
