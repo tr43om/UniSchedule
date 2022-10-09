@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "905148206944",
+    "project_id": "omsu-schedule",
+    "storage_bucket": "omsu-schedule.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905148206944:android:40e542ced1d64ecbad1805",
+        "android_client_info": {
+          "package_name": "com.unischedule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905148206944-420cpo33uojhess2idrdotbh5l801c1c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKxDfn4T1cwaesRQEbhWPVLFsSgYcpNZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905148206944-420cpo33uojhess2idrdotbh5l801c1c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
