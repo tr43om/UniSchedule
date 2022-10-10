@@ -1,9 +1,9 @@
 import {ScheduleScreen} from '../ScheduleScreen';
 import {SettingsScreen} from '../SettingsScreen';
+import {FavoritesScreen} from '../FavoritesScreen';
 import {Tabs} from '../../navigation/root-routes';
 import React from 'react';
 import {FavoriteIcon, ScheduleIcon, SettingsIcon} from '../../assets';
-import {Text} from 'react-native-svg';
 import {useTheme} from '@react-navigation/native';
 
 const HomeScreen = () => {
@@ -17,7 +17,6 @@ const HomeScreen = () => {
         tabBarLabelStyle: {
           marginBottom: 10,
         },
-        tabBarIconStyle: {},
       }}>
       <Tabs.Screen
         name="Schedule"
@@ -33,8 +32,8 @@ const HomeScreen = () => {
         }}
       />
       <Tabs.Screen
-        name="Favorite"
-        component={SettingsScreen}
+        name="Favorites"
+        component={FavoritesScreen}
         options={{
           tabBarIcon: ({focused}) => (
             <FavoriteIcon

@@ -17,6 +17,8 @@
     "@react-navigation/material-top-tabs": "^6.2.4",
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/native-stack": "^6.9.0",
+    "@redux-saga/core": "^1.2.1",
+    "@reduxjs/toolkit": "^1.8.6",
     "react": "18.1.0",
     "react-native": "^0.70.2",
     "react-native-navigation-bar-color": "^2.0.1",
@@ -25,7 +27,9 @@
     "react-native-screens": "^3.18.0",
     "react-native-svg": "^13.3.0",
     "react-native-system-navigation-bar": "^2.0.0",
-    "react-native-tab-view": "^3.2.1"
+    "react-native-tab-view": "^3.2.1",
+    "react-redux": "^8.0.4",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
