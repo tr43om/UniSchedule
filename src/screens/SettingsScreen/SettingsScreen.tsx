@@ -3,6 +3,7 @@ import React from 'react';
 import {Container} from '../../../components';
 import {Typography} from '../../../components';
 import {useTheme} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
 const SettingsScreen = () => {
   return (

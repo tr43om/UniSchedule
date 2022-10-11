@@ -1,6 +1,8 @@
 import {all, call, spawn} from 'redux-saga/effects';
 import {settingsReducer} from './settings';
 
+export * from './settings';
+
 export const reducers = {
   settings: settingsReducer,
 };
