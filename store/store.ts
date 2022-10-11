@@ -2,6 +2,8 @@ import {configureStore} from '@reduxjs/toolkit';
 import createSagaMiddleware from '@redux-saga/core';
 import rootReducer from './rootReducer';
 import {useDispatch} from 'react-redux';
+import {PersistConfig} from 'redux-persist';
+
 import {
   persistStore,
   persistReducer,
@@ -13,10 +15,13 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import rootSaga from './ducks';
+import storage from 'redux-persist/lib/storage';
+
+// import rootSaga from './ducks';
 
 const persistConfig = {
   key: 'root',
+  storage,
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -31,7 +36,7 @@ const store = configureStore({
 
       return getDefaultMiddleware({
         serializableCheck: {
-          ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+          // ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
       }).concat(sagaMiddleware, createFlipperDebugger());
     }
@@ -39,7 +44,7 @@ const store = configureStore({
   },
 });
 
-sagaMiddleware.run(rootSaga);
+// sagaMiddleware.run(rootSaga);
 
 export const persistor = persistStore(store);
 
