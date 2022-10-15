@@ -18,5 +18,5 @@ const {actions, reducer} = createSlice({
   },
 });
 
-export const {} = actions;
+export const {toggleTheme} = actions;
 export const settingsReducer = reducer;

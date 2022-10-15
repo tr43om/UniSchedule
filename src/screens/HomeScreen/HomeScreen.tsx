@@ -5,9 +5,14 @@ import {Tabs} from '../../navigation/root-routes';
 import React from 'react';
 import {FavoriteIcon, ScheduleIcon, SettingsIcon} from '../../assets';
 import {useTheme} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
+import {selectTheme} from '../../../store';
 
 const HomeScreen = () => {
+  const isDarkTheme = useSelector(selectTheme);
   const {colors} = useTheme();
+
+  const iconsColor = isDarkTheme ? '#fff' : colors.text;
   return (
     <Tabs.Navigator
       screenOptions={{
@@ -24,7 +29,7 @@ const HomeScreen = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <ScheduleIcon
-              fill={focused ? colors.primary : '#fff'}
+              fill={focused ? colors.primary : iconsColor}
               width={25}
               height={25}
             />
@@ -37,7 +42,7 @@ const HomeScreen = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <FavoriteIcon
-              fill={focused ? colors.primary : '#fff'}
+              fill={focused ? colors.primary : iconsColor}
               width={25}
               height={25}
             />
@@ -50,7 +55,7 @@ const HomeScreen = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <SettingsIcon
-              fill={focused ? colors.primary : '#fff'}
+              fill={focused ? colors.primary : iconsColor}
               width={25}
               height={25}
             />

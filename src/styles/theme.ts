@@ -18,5 +18,6 @@ export const lightTheme: Theme = {
   colors: {
     ...DefaultTheme.colors,
     primary: 'rgb(255, 45, 85)',
+    text: '#23242A',
   },
 };
