@@ -1,10 +1,13 @@
 import {all, call, spawn} from 'redux-saga/effects';
 import {settingsReducer} from './settings';
+import {userReducer} from './user';
 
 export * from './settings';
+export * from './user';
 
 export const reducers = {
   settings: settingsReducer,
+  user: userReducer,
 };
 
 // export default function* rootSaga(): Generator<any, void, any> {
