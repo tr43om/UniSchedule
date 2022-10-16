@@ -4,9 +4,15 @@ import firestore from '@react-native-firebase/firestore';
 
 import {DocumentData} from '../types';
 
-export const useCollection = (coll: string) => {
-  const [documents, setDocuments] = useState<DocumentData[]>();
-  const [errorMessage, setErrorMessage] = useState<string>();
+export const useCollection = <DOC,>(
+  coll: string,
+): {
+  documents: DOC[] | null;
+  errorMessage: string;
+  isPending: boolean;
+} => {
+  const [documents, setDocuments] = useState<DOC[] | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const [isPending, setIsPending] = useState<boolean>(false);
 
   useEffect(() => {
@@ -17,11 +23,11 @@ export const useCollection = (coll: string) => {
       snapshot => {
         if (snapshot.empty) {
           setIsPending(false);
-          setDocuments([]);
+          setDocuments(null);
           setErrorMessage('There is no comments, add the new one');
         } else {
           setIsPending(false);
-          let results: object[] = [];
+          let results: any = [];
           snapshot.docs.forEach(doc => {
             results.push({...doc.data(), id: doc.id});
           });

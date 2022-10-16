@@ -1,5 +1,6 @@
 export type ScheduleType = {
   name: string;
+  id: string;
   professor: string[];
   classroom: number[];
   classStart: string;
