@@ -9,20 +9,21 @@ import {selectTheme} from '../../store';
 import {SignInScreen} from '../screens/SignInScreen';
 import {SignUpScreen} from '../screens/SignUpScreen';
 import {AuthStack} from './root-routes';
+import {Routes} from '../types';
 const Navigation = () => {
   const isDarkTheme = useSelector(selectTheme);
   return (
     <NavigationContainer theme={isDarkTheme ? darkTheme : lightTheme}>
       <RootStack.Navigator>
         <RootStack.Screen
-          name="Home"
+          name={Routes.Home}
           component={HomeScreen}
           options={{headerShown: false}}
         />
       </RootStack.Navigator>
       <AuthStack.Navigator>
-        <AuthStack.Screen name="Signin" component={SignInScreen} />
-        <AuthStack.Screen name="Signup" component={SignUpScreen} />
+        <AuthStack.Screen name={Routes.Signin} component={SignInScreen} />
+        <AuthStack.Screen name={Routes.Signup} component={SignUpScreen} />
       </AuthStack.Navigator>
     </NavigationContainer>
   );

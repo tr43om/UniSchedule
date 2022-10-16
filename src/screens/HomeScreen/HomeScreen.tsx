@@ -7,6 +7,7 @@ import {FavoriteIcon, ScheduleIcon, SettingsIcon} from '../../assets';
 import {useTheme} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 import {selectTheme} from '../../../store';
+import {Routes} from '../../types';
 
 const HomeScreen = () => {
   const isDarkTheme = useSelector(selectTheme);
@@ -24,7 +25,7 @@ const HomeScreen = () => {
         },
       }}>
       <Tabs.Screen
-        name="Schedule"
+        name={Routes.Schedule}
         component={ScheduleScreen}
         options={{
           tabBarIcon: ({focused}) => (
@@ -37,7 +38,7 @@ const HomeScreen = () => {
         }}
       />
       <Tabs.Screen
-        name="Favorites"
+        name={Routes.Favorites}
         component={FavoritesScreen}
         options={{
           tabBarIcon: ({focused}) => (
@@ -50,7 +51,7 @@ const HomeScreen = () => {
         }}
       />
       <Tabs.Screen
-        name="Settings"
+        name={Routes.Settings}
         component={SettingsScreen}
         options={{
           tabBarIcon: ({focused}) => (
