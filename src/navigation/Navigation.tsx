@@ -10,21 +10,35 @@ import {SignInScreen} from '../screens/SignInScreen';
 import {SignUpScreen} from '../screens/SignUpScreen';
 import {AuthStack} from './root-routes';
 import {Routes} from '../types';
+
+import {selectAuthorizationStatus} from '../../store';
 const Navigation = () => {
   const isDarkTheme = useSelector(selectTheme);
+  const isAuthorized = useSelector(selectAuthorizationStatus);
   return (
     <NavigationContainer theme={isDarkTheme ? darkTheme : lightTheme}>
-      <RootStack.Navigator>
-        <RootStack.Screen
-          name={Routes.Home}
-          component={HomeScreen}
-          options={{headerShown: false}}
-        />
-      </RootStack.Navigator>
-      <AuthStack.Navigator>
-        <AuthStack.Screen name={Routes.Signin} component={SignInScreen} />
-        <AuthStack.Screen name={Routes.Signup} component={SignUpScreen} />
-      </AuthStack.Navigator>
+      {isAuthorized ? (
+        <RootStack.Navigator>
+          <RootStack.Screen
+            name={Routes.Home}
+            component={HomeScreen}
+            options={{headerShown: false}}
+          />
+        </RootStack.Navigator>
+      ) : (
+        <AuthStack.Navigator>
+          <AuthStack.Screen
+            name={Routes.Signup}
+            component={SignUpScreen}
+            options={{headerShown: false}}
+          />
+          <AuthStack.Screen
+            name={Routes.Signin}
+            component={SignInScreen}
+            options={{headerShown: false}}
+          />
+        </AuthStack.Navigator>
+      )}
     </NavigationContainer>
   );
 };

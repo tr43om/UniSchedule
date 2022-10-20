@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 const initialState: SettingsSliceType = {
-  darkMode: true,
+  darkMode: false,
 };
 
 type SettingsSliceType = {

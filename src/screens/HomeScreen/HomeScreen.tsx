@@ -1,7 +1,7 @@
 import {ScheduleScreen} from '../ScheduleScreen';
 import {SettingsScreen} from '../SettingsScreen';
 import {FavoritesScreen} from '../FavoritesScreen';
-import {Tabs} from '../../navigation/root-routes';
+import {HomeTabs} from '../../navigation/root-routes';
 import React from 'react';
 import {FavoriteIcon, ScheduleIcon, SettingsIcon} from '../../assets';
 import {useTheme} from '@react-navigation/native';
@@ -15,7 +15,7 @@ const HomeScreen = () => {
 
   const iconsColor = isDarkTheme ? '#fff' : colors.text;
   return (
-    <Tabs.Navigator
+    <HomeTabs.Navigator
       screenOptions={{
         tabBarStyle: {
           height: 70,
@@ -24,7 +24,7 @@ const HomeScreen = () => {
           marginBottom: 10,
         },
       }}>
-      <Tabs.Screen
+      <HomeTabs.Screen
         name={Routes.Schedule}
         component={ScheduleScreen}
         options={{
@@ -37,7 +37,7 @@ const HomeScreen = () => {
           ),
         }}
       />
-      <Tabs.Screen
+      <HomeTabs.Screen
         name={Routes.Favorites}
         component={FavoritesScreen}
         options={{
@@ -50,7 +50,7 @@ const HomeScreen = () => {
           ),
         }}
       />
-      <Tabs.Screen
+      <HomeTabs.Screen
         name={Routes.Settings}
         component={SettingsScreen}
         options={{
@@ -63,7 +63,7 @@ const HomeScreen = () => {
           ),
         }}
       />
-    </Tabs.Navigator>
+    </HomeTabs.Navigator>
   );
 };
 

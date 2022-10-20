@@ -7,6 +7,7 @@ const Container = ({children}: PropsWithChildren) => {
 
 const styles = StyleSheet.create({
   container: {
+    position: 'relative',
     padding: 15,
   },
 });
