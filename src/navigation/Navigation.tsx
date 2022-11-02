@@ -1,22 +1,20 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {darkTheme} from '../styles';
-import {lightTheme} from '../styles';
-import {HomeScreen} from '../screens/HomeScreen';
-import {RootStack} from './root-routes';
+import {
+  HomeScreen,
+  WelcomeScreen,
+  SignInScreen,
+  SignUpScreen,
+} from '../screens';
+import {RootStack, AuthStack} from './root-routes';
 import {useSelector} from 'react-redux';
-import {selectTheme} from '../../store';
-import {SignInScreen} from '../screens/SignInScreen';
-import {SignUpScreen} from '../screens/SignUpScreen';
-import {AuthStack} from './root-routes';
+import {selectAuthorizationStatus} from '../../store';
 import {Routes} from '../types';
 
-import {selectAuthorizationStatus} from '../../store';
 const Navigation = () => {
-  const isDarkTheme = useSelector(selectTheme);
   const isAuthorized = useSelector(selectAuthorizationStatus);
+
   return (
-    <NavigationContainer theme={isDarkTheme ? darkTheme : lightTheme}>
+    <>
       {isAuthorized ? (
         <RootStack.Navigator>
           <RootStack.Screen
@@ -27,6 +25,14 @@ const Navigation = () => {
         </RootStack.Navigator>
       ) : (
         <AuthStack.Navigator>
+          <AuthStack.Screen
+            name={'Welcome'}
+            component={WelcomeScreen}
+            options={{
+              contentStyle: {paddingHorizontal: 30},
+              headerShown: false,
+            }}
+          />
           <AuthStack.Screen
             name={Routes.Signup}
             component={SignUpScreen}
@@ -39,7 +45,7 @@ const Navigation = () => {
           />
         </AuthStack.Navigator>
       )}
-    </NavigationContainer>
+    </>
   );
 };
 

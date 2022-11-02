@@ -2,7 +2,6 @@ import {configureStore} from '@reduxjs/toolkit';
 import createSagaMiddleware from '@redux-saga/core';
 import rootReducer from './rootReducer';
 import {useDispatch} from 'react-redux';
-import {PersistConfig} from 'redux-persist';
 
 import {
   persistStore,
@@ -15,13 +14,31 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import storage from 'redux-persist/lib/storage';
-
 // import rootSaga from './ducks';
+
+import {Storage} from 'redux-persist';
+import {MMKV} from 'react-native-mmkv';
+
+const storage = new MMKV();
+
+const reduxStorage: Storage = {
+  setItem: (key, value) => {
+    storage.set(key, value);
+    return Promise.resolve(true);
+  },
+  getItem: key => {
+    const value = storage.getString(key);
+    return Promise.resolve(value);
+  },
+  removeItem: key => {
+    storage.delete(key);
+    return Promise.resolve();
+  },
+};
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage: reduxStorage,
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -34,13 +51,17 @@ const store = configureStore({
     if (__DEV__) {
       const createFlipperDebugger = require('redux-flipper').default;
 
-      return getDefaultMiddleware({
-        serializableCheck: {
-          // ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-        },
-      }).concat(sagaMiddleware, createFlipperDebugger());
+      // return getDefaultMiddleware({
+      //   serializableCheck: {
+      //     // ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      //   },
+      // }).concat(sagaMiddleware, createFlipperDebugger());
     }
-    return getDefaultMiddleware().concat(sagaMiddleware);
+    return getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat(sagaMiddleware);
   },
 });
 

@@ -17,17 +17,23 @@ export type RootTabsParams = {
 };
 
 export type AuthStackParams = {
+  Welcome: undefined;
   Signin: undefined;
-  Signup: NavigatorScreenParams<SignupTabsParams>;
+  Signup: NavigatorScreenParams<SignupStepsTabsParams>;
 };
 
-export type SignupTabsParams = {
+export type WelcomeScreenProps = NativeStackScreenProps<
+  AuthStackParams,
+  'Welcome'
+>;
+
+export type SignupStepsTabsParams = {
   FirstStep: undefined;
   SecondStep: undefined;
   ThirdStep: undefined;
 };
 
 export type SignUpStepScreenProps = CompositeScreenProps<
-  MaterialTopTabScreenProps<SignupTabsParams>,
+  MaterialTopTabScreenProps<SignupStepsTabsParams>,
   NativeStackScreenProps<AuthStackParams>
 >;

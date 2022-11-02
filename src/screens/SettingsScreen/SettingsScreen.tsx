@@ -2,7 +2,7 @@ import {View, Text, Switch, StyleSheet} from 'react-native';
 import React, {useEffect} from 'react';
 import {Container, Typography} from '../../../components';
 import {useSelector} from 'react-redux';
-import {useAppDispatch, selectTheme, toggleTheme} from '../../../store';
+import {useAppDispatch, selectIsDarkMode, toggleTheme} from '../../../store';
 import {useTheme} from '@react-navigation/native';
 
 const SettingsScreen = () => {
@@ -12,13 +12,13 @@ const SettingsScreen = () => {
   const handleOnChange = () => {
     dispatch(toggleTheme());
   };
-  const theme = useSelector(selectTheme);
+  const isDarkMode = useSelector(selectIsDarkMode);
   return (
     <Container>
       <View style={styles.setting}>
         <Typography>Dark theme</Typography>
         <Switch
-          value={theme}
+          value={isDarkMode}
           onChange={handleOnChange}
           thumbColor={colors.primary}
         />

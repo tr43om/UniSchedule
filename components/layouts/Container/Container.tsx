@@ -5,6 +5,8 @@ const Container = ({children}: PropsWithChildren) => {
   return <View style={styles.container}>{children}</View>;
 };
 
+type ContainerProps = PropsWithChildren<{}>;
+
 const styles = StyleSheet.create({
   container: {
     position: 'relative',

@@ -11,6 +11,7 @@
     "icons:create": "npx @svgr/cli --config-file ./src/assets/icons/svgrrc.config.js -- ./src/assets/icons/source"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.9.10",
     "@react-native-firebase/app": "^15.7.0",
     "@react-native-firebase/firestore": "^15.7.0",
     "@react-navigation/bottom-tabs": "^6.4.0",
@@ -19,12 +20,19 @@
     "@react-navigation/native-stack": "^6.9.0",
     "@redux-saga/core": "^1.2.1",
     "@reduxjs/toolkit": "^1.8.6",
+    "@types/node": "^18.11.7",
+    "algoliasearch": "^4.14.2",
     "date-fns": "^2.29.3",
+    "deepmerge": "^4.2.2",
+    "dotenv": "^16.0.3",
     "react": "18.1.0",
-    "react-firebase-hooks": "^5.0.3",
+    "react-hook-form": "^7.38.0",
+    "react-instantsearch-hooks": "^6.38.0",
     "react-native": "0.70.3",
+    "react-native-config": "^1.4.11",
     "react-native-flipper": "^0.164.0",
     "react-native-material-textfield": "^0.16.1",
+    "react-native-mmkv": "^2.5.0",
     "react-native-navigation-bar-color": "^2.0.1",
     "react-native-pager-view": "^6.0.1",
     "react-native-paper": "5.0.0-rc.6",
@@ -39,7 +47,8 @@
     "redux-flipper": "^2.0.2",
     "redux-persist": "^6.0.0",
     "redux-saga": "^1.2.1",
-    "rn-material-ui-textfield": "^1.0.7"
+    "rn-material-ui-textfield": "^1.0.7",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

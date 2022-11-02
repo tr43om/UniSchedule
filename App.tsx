@@ -1,19 +1,20 @@
 import React from 'react';
 import {Navigation} from './src/navigation';
-import {Provider as StoreProvider} from 'react-redux';
-import {PersistGate} from 'redux-persist/es/integration/react';
-import {persistor, store} from './store';
 import {Provider as PaperProvider} from 'react-native-paper';
 
+import {NavigationContainer} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
+
+import {selectTheme} from './store';
+
 const App = () => {
+  const theme = useSelector(selectTheme);
   return (
-    <PersistGate persistor={persistor}>
-      <StoreProvider store={store}>
-        <PaperProvider>
-          <Navigation />
-        </PaperProvider>
-      </StoreProvider>
-    </PersistGate>
+    <PaperProvider theme={theme}>
+      <NavigationContainer theme={theme}>
+        <Navigation />
+      </NavigationContainer>
+    </PaperProvider>
   );
 };
 

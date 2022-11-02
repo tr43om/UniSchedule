@@ -7,11 +7,11 @@ import {DocumentData} from '../types';
 export const useCollection = <DOC,>(
   coll: string,
 ): {
-  documents: DOC[] | null;
+  documents: DOC[];
   errorMessage: string;
   isPending: boolean;
 } => {
-  const [documents, setDocuments] = useState<DOC[] | null>(null);
+  const [documents, setDocuments] = useState<DOC[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [isPending, setIsPending] = useState<boolean>(false);
 
@@ -23,7 +23,7 @@ export const useCollection = <DOC,>(
       snapshot => {
         if (snapshot.empty) {
           setIsPending(false);
-          setDocuments(null);
+          // setDocuments(null);
           setErrorMessage('There is no comments, add the new one');
         } else {
           setIsPending(false);

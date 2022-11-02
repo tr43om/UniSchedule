@@ -7,11 +7,12 @@ import {
   AuthStackParams,
   RootStackParams,
   RootTabsParams,
-  SignupTabsParams,
+  SignupStepsTabsParams,
 } from '../types';
 
 export const RootStack = createNativeStackNavigator<RootStackParams>();
 export const HomeTabs = createBottomTabNavigator<RootTabsParams>();
 
 export const AuthStack = createNativeStackNavigator<AuthStackParams>();
-export const SignupTabs = createMaterialTopTabNavigator<SignupTabsParams>();
+export const SignupStepsTabs =
+  createMaterialTopTabNavigator<SignupStepsTabsParams>();

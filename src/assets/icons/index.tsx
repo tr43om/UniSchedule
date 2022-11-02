@@ -1,3 +1,15 @@
+export {default as ArrowLeftIcon} from './ArrowLeft';
+export {default as ArrowNextIcon} from './ArrowNext';
+export {default as ArrowRightIcon} from './ArrowRight';
+export {default as CheckIcon} from './Check';
+export {default as ClearIcon} from './Clear';
 export {default as FavoriteIcon} from './Favorite';
+export {default as FilterIcon} from './Filter';
+export {default as FilteraltIcon} from './Filteralt';
 export {default as ScheduleIcon} from './Schedule';
+export {default as SearchIcon} from './Search';
+export {default as SearchEngineIcon} from './SearchEngine';
+export {default as SearchIllustrationIcon} from './SearchIllustration';
+export {default as Searching20Icon} from './Searching20';
 export {default as SettingsIcon} from './Settings';
+export {default as TuneIcon} from './Tune';

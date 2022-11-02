@@ -1,23 +1,70 @@
-import {DefaultTheme, DarkTheme} from '@react-navigation/native';
-import {Theme} from '@react-navigation/native';
+import {
+  DefaultTheme as NavigationLightTheme,
+  Theme as NavigationTheme,
+  DarkTheme as NavigationDarkTheme,
+} from '@react-navigation/native';
 
-export const darkTheme: Theme = {
-  ...DarkTheme,
+import {
+  MD3LightTheme as PaperLightTheme,
+  MD3DarkTheme as PaperDarkTheme,
+} from 'react-native-paper';
+
+import {
+  Theme as PaperTheme,
+  MD3Theme,
+} from 'react-native-paper/lib/typescript/types';
+
+import merge from 'deepmerge';
+
+export const darkTheme: NavigationTheme = {
+  ...NavigationDarkTheme,
   dark: true,
   colors: {
-    ...DarkTheme.colors,
-    primary: 'rgb(255, 45, 85)',
-    background: '#121212',
+    ...NavigationDarkTheme.colors,
+    primary: '#c1175b',
+
+    background: '#23293d',
     card: '#23242A',
   },
 };
 
-export const lightTheme: Theme = {
-  ...DefaultTheme,
-
+export const paperDarkTheme: PaperTheme = {
+  ...PaperDarkTheme,
+  dark: true,
+  roundness: 10,
   colors: {
-    ...DefaultTheme.colors,
-    primary: 'rgb(255, 45, 85)',
-    text: '#23242A',
+    ...PaperDarkTheme.colors,
+    background: '#23293d',
+    secondary: '#8DBBFF',
+    primary: '#c1175b',
   },
 };
+
+export const paperLightTheme: MD3Theme = {
+  ...PaperLightTheme,
+
+  colors: {
+    ...PaperLightTheme.colors,
+    background: '#e5e6ed',
+    primary: '#c1175b',
+    tertiary: '#919091',
+  },
+};
+
+export const lightTheme: NavigationTheme = {
+  ...NavigationLightTheme,
+  colors: {
+    ...NavigationLightTheme.colors,
+    background: '#e5e6ed',
+    primary: '#c1175b',
+    text: '#23293d',
+  },
+};
+
+type PaperLightTheme = typeof CombinedLightTheme;
+type PaperDarkTheme = typeof CombinedDarkTheme;
+
+export const CombinedLightTheme = merge(paperLightTheme, lightTheme);
+export const CombinedDarkTheme = merge(paperDarkTheme, darkTheme);
+
+export interface CustomThemeType extends PaperLightTheme, PaperDarkTheme {}
