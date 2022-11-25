@@ -22,11 +22,6 @@ export type AuthStackParams = {
   Signup: NavigatorScreenParams<SignupStepsTabsParams>;
 };
 
-export type WelcomeScreenProps = NativeStackScreenProps<
-  AuthStackParams,
-  'Welcome'
->;
-
 export type SignupStepsTabsParams = {
   FirstStep: undefined;
   SecondStep: undefined;

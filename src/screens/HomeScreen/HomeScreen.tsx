@@ -6,7 +6,7 @@ import React from 'react';
 import {FavoriteIcon, ScheduleIcon, SettingsIcon} from '../../assets';
 import {useTheme} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
-import {selectTheme} from '../../../store';
+import {selectTheme} from '../../store';
 import {Routes} from '../../types';
 
 const HomeScreen = () => {
@@ -16,7 +16,9 @@ const HomeScreen = () => {
   const iconsColor = isDarkTheme ? '#fff' : colors.text;
   return (
     <HomeTabs.Navigator
+      sceneContainerStyle={{paddingHorizontal: 15, paddingTop: 15}}
       screenOptions={{
+        headerShown: false,
         tabBarStyle: {
           height: 70,
         },

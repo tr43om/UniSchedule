@@ -8,7 +8,7 @@ import App from './App';
 import {name as appName} from './app.json';
 import {Provider as StoreProvider} from 'react-redux';
 import {PersistGate} from 'redux-persist/es/integration/react';
-import {store, persistor} from './store';
+import {store, persistor} from './src/store';
 
 const AppWrapper = () => {
   return (

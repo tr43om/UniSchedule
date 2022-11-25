@@ -1,6 +1,8 @@
 export * from './FirebaseFirestoreTypes';
-export * from './FFLTypes'; // faculty of foreign languages
+
 export * from './NavigationTypes/NavigationTypes';
+export * from './GroupType/GroupType';
+export * from './ScheduleType';
 
 export enum Routes {
   Home = 'Home',

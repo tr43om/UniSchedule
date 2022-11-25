@@ -1,9 +1,15 @@
 import {View, Text, Switch, StyleSheet} from 'react-native';
 import React, {useEffect} from 'react';
-import {Container, Typography} from '../../../components';
+import {Container, Typography} from '../../components';
 import {useSelector} from 'react-redux';
-import {useAppDispatch, selectIsDarkMode, toggleTheme} from '../../../store';
+import {
+  useAppDispatch,
+  selectIsDarkMode,
+  toggleTheme,
+  setIsAuthorized,
+} from '../../store';
 import {useTheme} from '@react-navigation/native';
+import {Button} from 'react-native-paper';
 
 const SettingsScreen = () => {
   const dispatch = useAppDispatch();
@@ -22,6 +28,9 @@ const SettingsScreen = () => {
           onChange={handleOnChange}
           thumbColor={colors.primary}
         />
+      </View>
+      <View style={styles.setting}>
+        <Button onPress={() => dispatch(setIsAuthorized())}>Выйти</Button>
       </View>
     </Container>
   );

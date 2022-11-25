@@ -10,7 +10,7 @@ import {
   ArrowRightIcon,
   CheckIcon,
 } from '../assets';
-import {Container} from '../../components';
+
 import {useTheme} from 'react-native-paper';
 export const withNavigation = (Component: FC<SignUpStepScreenProps>) => {
   const Wrapper: FC<SignUpStepScreenProps> = (
@@ -90,6 +90,7 @@ export const withNavigation = (Component: FC<SignUpStepScreenProps>) => {
       bottom: 0,
       right: -10,
       borderRadius: 10,
+      zIndex: -1,
     },
     prevButton: {
       position: 'absolute',

@@ -1,13 +1,8 @@
 import React from 'react';
-import {
-  HomeScreen,
-  WelcomeScreen,
-  SignInScreen,
-  SignUpScreen,
-} from '../screens';
+import {HomeScreen, SignUpScreen} from '../screens';
 import {RootStack, AuthStack} from './root-routes';
 import {useSelector} from 'react-redux';
-import {selectAuthorizationStatus} from '../../store';
+import {selectAuthorizationStatus} from '../store';
 import {Routes} from '../types';
 
 const Navigation = () => {
@@ -26,21 +21,8 @@ const Navigation = () => {
       ) : (
         <AuthStack.Navigator>
           <AuthStack.Screen
-            name={'Welcome'}
-            component={WelcomeScreen}
-            options={{
-              contentStyle: {paddingHorizontal: 30},
-              headerShown: false,
-            }}
-          />
-          <AuthStack.Screen
             name={Routes.Signup}
             component={SignUpScreen}
-            options={{headerShown: false}}
-          />
-          <AuthStack.Screen
-            name={Routes.Signin}
-            component={SignInScreen}
             options={{headerShown: false}}
           />
         </AuthStack.Navigator>

@@ -2,11 +2,11 @@ import {StyleSheet} from 'react-native';
 import React from 'react';
 import {SignupStepsTabs} from '../../navigation/root-routes';
 import {
-  SignUpFirstStepScreen,
-  SignUpSecondStepScreen,
-  SignUpThirdStepScreen,
+  GroupSelectionScreen,
+  OptionalQuestionScreen,
+  WelcomeScreen,
 } from './steps';
-import {SignUpTabBar} from '../../../components';
+import {SignUpTabBar} from '../../components';
 import {MaterialTopTabBarProps} from '@react-navigation/material-top-tabs';
 import {withNavigation} from '../../hocs';
 
@@ -17,19 +17,17 @@ const SignUpScreen = () => {
       tabBar={(state: MaterialTopTabBarProps) => <SignUpTabBar {...state} />}
       sceneContainerStyle={styles.container}
       backBehavior="order"
+      screenOptions={{swipeEnabled: false}}
       children={
         <SignupStepsTabs.Group>
-          <SignupStepsTabs.Screen
-            name="FirstStep"
-            component={withNavigation(SignUpFirstStepScreen)}
-          />
+          <SignupStepsTabs.Screen name="FirstStep" component={WelcomeScreen} />
           <SignupStepsTabs.Screen
             name="SecondStep"
-            component={withNavigation(SignUpSecondStepScreen)}
+            component={GroupSelectionScreen}
           />
           <SignupStepsTabs.Screen
             name="ThirdStep"
-            component={withNavigation(SignUpThirdStepScreen)}
+            component={OptionalQuestionScreen}
           />
         </SignupStepsTabs.Group>
       }
@@ -39,6 +37,7 @@ const SignUpScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 25,
     paddingHorizontal: 25,
   },
 });

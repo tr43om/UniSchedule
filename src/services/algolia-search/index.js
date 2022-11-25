@@ -8,4 +8,4 @@ export const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY);
 export const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY);
 
 // Create a new index and add a record
-export const index = client.initIndex('groups');
+export const algoliaIndex = client.initIndex('groups');

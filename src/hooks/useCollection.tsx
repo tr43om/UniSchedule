@@ -2,8 +2,6 @@ import {useEffect, useState} from 'react';
 
 import firestore from '@react-native-firebase/firestore';
 
-import {DocumentData} from '../types';
-
 export const useCollection = <DOC,>(
   coll: string,
 ): {

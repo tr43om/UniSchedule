@@ -1,3 +1,3 @@
-export * from './SignUpFirstStepScreen';
-export * from './SignUpSecondStepScreen';
-export * from './SignUpThirdStepScreen';
+export * from './GroupSelectionScreen';
+export * from './OptionalQuestionScreen';
+export * from './WelcomeScreen';
