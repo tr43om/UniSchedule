@@ -19,11 +19,46 @@ import {useSelector} from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
 import {useEffect} from 'react';
 import {useState} from 'react';
+import {
+  useCollectionData,
+  useCollection as useColl,
+} from '@skillnation/react-native-firebase-hooks/firestore';
 import type {FirebaseFirestoreTypes} from '@react-native-firebase/firestore';
+import {CollectionReference} from '../../types/FirebaseFirestoreTypes/FirebaseFirestoreTypes';
+import {DocumentData} from '../../types/FirebaseFirestoreTypes/FirebaseFirestoreTypes';
 
 const ScheduleScreen = () => {
-  const {documents: schedule} = useCollection<YapbScheduleType>('ЯПБ-901-о-11');
+  const {documents: schedule} = useCollection<YapbScheduleType>('schedule');
+  const [schs, setSch] = useState<DocumentData[]>();
+
+  console.log(schs);
+
+  useEffect(() => {
+    const ref = firestore()
+      .collection('schedule')
+      .where('group', '==', 'ЯПБ-901-О-11')
+      .get()
+      .then(groupRef => groupRef.docs)
+      .then(group => group[0].ref)
+      .then(weekRef =>
+        weekRef
+          .collection('week_1')
+          .where('weekday', '==', 'понедельник')
+          .get(),
+      )
+      .then(weeks => {
+        const result = weeks.docs.map(week => week.data());
+        setSch(result);
+      });
+
+    // console.log(ref);
+  }, []);
+
+  // const [data, loading, error] = useColl(scheduleRef);
+  // console.log(data?.docs[0].get());
+
   const username = useSelector(selectUsername);
+
   const selectedSecondLanguage = useSelector(selectSecondLanguage);
   const filteredSchedule = schedule.filter(
     sch => !sch.secondLanguage || sch.secondLanguage === 'Французский',
@@ -34,108 +69,31 @@ const ScheduleScreen = () => {
     >();
 
   const dayOfWeek = new Date()
-    .toLocaleDateString('en-US', {weekday: 'long'})
+    .toLocaleDateString('ru-Ru', {weekday: 'long'})
     .split(',')[0]
     .toLowerCase();
+
+  console.log(dayOfWeek);
 
   const currentWeek = Math.floor(
     differenceInWeeks(new Date(), new Date(2022, 7, 29)),
   );
 
   console.log(currentWeek);
-  // console.log(new Date().toLocaleDateString());
-  // console.log(getDay(new Date()).toLocaleString());
-
-  // console.log(isMonday());
-
-  // firestore()
-  //   .collection('groups')
-  //   .get()
-  //   .then(snap => {
-  //     weeks.forEach(week =>
-  //       snap.docs[0].ref
-  //         .collection('schedule')
-  //         .doc(`${week}`)
-  //         .set({})
-  //         .then(doc => console.log(doc)),
-  //     );
-  //   })
-  //   .then(() => console.log('done'));
-  // console.log('oo');
-
-  useEffect(() => {
-    const addWeeksToSchedule = () => {
-      const weeks = [11, 12, 13, 14, 15, 16, 17];
-      const weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
-
-      // firestore()
-      //   .collection('schedule')
-      //   .doc('uuid')
-      //   .get()
-      //   .then(doc => {
-      //     doc.ref.set({
-      //       groupID: 'groupID',
-      //       name: 'groupName',
-      //     });
-
-      //     weeks.forEach(week =>
-      //       weekdays.forEach(weekday =>
-      //         doc.ref.collection(`week_${week}`).doc().set({weekday}),
-      //       ),
-      //     );
-      //   });
-
-      firestore()
-        .collection('schedule')
-        .get()
-        .then(scheduleItem =>
-          scheduleItem.docs.forEach(doc =>
-            weeks.forEach(week =>
-              weekdays.forEach(weekday =>
-                doc.ref
-                  .collection(`week_${week}`)
-                  .doc()
-                  .set({weekday}, {merge: true}),
-              ),
-            ),
-          ),
-        )
-        .then(() => console.log('done'));
-
-      // console.log(scheduleColl);
-    };
-
-    // firestore()
-    //   .collection('schedule')
-    //   .doc('uuid')
-    //   .collection('week_12')
-    //   .where('weekday', '==', 'friday')
-    //   .get()
-    //   .then(doc => console.log(doc.docs[0].data()));
-
-    // scheduleColl?.forEach(doc => )
-
-    // snap.docs.forEach(doc =>
-    //   weekdays.forEach(week => doc.ref.collection(`week_${week}`)),
-    // );
-    // addWeeksToSchedule();
-  }, []);
-
-  // then(snap => snap.docs.forEach(doc => doc.ref.collection('schedule')));
 
   return (
     <View>
       <Text>Привет, {username}</Text>
       <FlatList
         ItemSeparatorComponent={() => <View style={{marginVertical: 5}} />}
-        data={filteredSchedule}
+        data={schs}
         keyExtractor={({id}) => id}
         renderItem={({item}) => (
           <>
             <TouchableOpacity>
               <Card>
                 {/* <Text>{item.name}</Text> */}
-                <Text>{item.name}</Text>
+                <Text>{item.subject}</Text>
               </Card>
             </TouchableOpacity>
           </>

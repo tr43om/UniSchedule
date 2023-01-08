@@ -1636,6 +1636,11 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@skillnation/react-native-firebase-hooks@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@skillnation/react-native-firebase-hooks/-/react-native-firebase-hooks-0.5.0.tgz#3f6dc084feb8d9d9b4a7d6467c6e70c369dfddc5"
+  integrity sha512-F4jUqbXvBLEdc3B/Vndn0qdarCXQXHQ6mYAUVw/cft25c4+AZ3Ja1nOl2AmQN5U5N5SDcXqsrDskapDbeM5VdA==
+
 "@svgr/babel-plugin-add-jsx-attribute@^6.3.1":
   version "6.3.1"
   resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-6.3.1.tgz#b9a5d84902be75a05ede92e70b338d28ab63fa74"
@@ -6568,6 +6573,11 @@ react-devtools-core@4.24.0:
   dependencies:
     shell-quote "^1.6.1"
     ws "^7"
+
+react-firebase-hooks@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/react-firebase-hooks/-/react-firebase-hooks-5.1.1.tgz#fc92bb4b860c6753c806583f64d7f069b6ee6785"
+  integrity sha512-y2UpWs82xs+39q5Rc/wq316ca52QsC0n8m801V+yM4IC4hbfOL4yQPVSh7w+ydstdvjN9F+lvs1WrO2VYxpmdA==
 
 react-freeze@^1.0.0:
   version "1.0.3"
